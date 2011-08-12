@@ -6,47 +6,27 @@
 	*/
 	if (isset($_POST['url'])){
 		if ($_POST['url'] != ''){
-			/*$ch = curl_init();
-
-			// set url
-			curl_setopt($ch, CURLOPT_URL, $_POST['url']);
-
-			//return the result as a string
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$output = curl_exec($ch);
-
-			// if the string is a valid bit.ly, gaw.kr
-			if (substr($output,0,4) == "<htm"){
-			    $start = strpos($output,'a href="');
-				$end = strpos($output,'">moved here<');
-				$result = substr($output,$start + 8,$end-$start - 13);
-				echo '<a href="' . $result . '">' . $result . '</a>';
-			}
-			// if the string is a valid goo.gl
-			else if(substr($output,0,4) == "<HTM"){
-				$start = strpos($output,'moved <A HREF="');
-				$end = strpos($output,'">here<');
-				$result = substr($output,$start + 15,$end-$start - 15);
-				echo '<a href="' . $result . '">' . $result . '</a>';
+			if (stripos($_POST['url'],'http://') != 0){
+				$url = 'http://' . $_POST['url'];
 			}
 			else{
-				echo 'fail';
+				$url = $_POST['url'];
 			}
-			// close curl
-			curl_close($ch);*/
 			
-			$c = new url_request($_POST['url']);
+			$c = new url_request($url);
 
 			$data = $c->get();
-			
-			$headers = $c->getHeaders();
-
-			echo '<a href="' . $headers['url'] . '">' . $headers['url'] . '</a>';
+			if ($data == 'no'){
+				echo 'no';
+			}
+			else{
+				$headers = $c->getHeaders();
+				echo '<a href="' . $headers['url'] . '">' . $headers['url'] . '</a>';
+			}	
 		}
 		else{
 			echo 'empty';
 		}
 		
 	}
-	
 ?>

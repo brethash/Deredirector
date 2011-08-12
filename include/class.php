@@ -51,7 +51,8 @@
 			//but curl_exec returns true (on no data) or false (if cannot connect) 
 			if (is_bool($this->response)) { 
 				if ($this->response==false){ 
-					throw new Exception('No connection'); 
+					$this->response='no';
+					//throw new Exception('No connection'); 
 				} 
 				else { 
 					//null the response, because there are actually no data 

@@ -20,6 +20,10 @@
 						$('#result span').addClass('error');
 						$('#result span').html('Enter a valid URL above.');
 					}
+					else if (data == 'no'){
+						$('#result span').addClass('error');
+						$('#result span').html('You did not enter a valid URL. Please try again.');
+					}
 					else{
 						$('#result span').hide().fadeIn().html(data);
 					}
