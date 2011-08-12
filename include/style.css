@@ -47,10 +47,10 @@ table {
 /* Begin page styles */
 #wrapper{
 	background: url('/images/unbitly_bg.png') no-repeat left top;
-	width: 415px;
-	height: 241px;
+	width: 360px;
+	height: 180px;
 	margin: 10% auto;
-	padding: 3%;
+	padding: 2%;
 }
 h1{
 	font-weight: bold;
@@ -58,6 +58,7 @@ h1{
 }
 h2{
 	font-size: 16px;
+	padding-left: 4%;
 }
 
 form{

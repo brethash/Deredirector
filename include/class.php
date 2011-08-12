@@ -28,9 +28,6 @@
 			//Response will be read in chunks of 64000 bytes 
 			curl_setopt($ch, CURLOPT_BUFFERSIZE, 64000);
 
-			//Tell curl to use POST 
-			curl_setopt($ch, CURLOPT_GET, 1);
-
 			//Tell curl to write the response to a variable 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			

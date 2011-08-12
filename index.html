@@ -1,9 +1,9 @@
 <html>
 <head>
-	<title>Un-Bitly | Discover what's hiding behind your bit.ly!</title>
+	<title>De-redirector| Discover what's hiding behind your short link!</title>
 	<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
-	<meta name="description" value="Ever wonder what that bit.ly link is going to take you to? Toss it in the Un-Bitly.">
-	<meta name="keywords" value="unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
+	<meta name="description" value="Ever wonder where that shortened link is going to take you to? Toss it in the De-redirector.">
+	<meta name="keywords" value="deredirector,de-redirector,tiny url,unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -14,13 +14,9 @@
 				function(data){
 					$('#result span').removeClass('error');
 
-					if (data == 'fail'){
+					if (data == 'fail' || data == 'empty'){
 						$('#result span').addClass('error');
-						$('#result span').hide().fadeIn().html('The URL you entered was not a valid bit.ly. Please try again.');
-					}
-					else if (data == 'empty'){
-						$('#result span').addClass('error');
-						$('#result span').html('Enter a valid bit.ly above.');
+						$('#result span').html('Enter a valid URL above.');
 					}
 					else{
 						$('#result span').hide().fadeIn().html(data);
@@ -34,13 +30,26 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>Un-Bitly... What's inside that bit.ly?</h1>
-		<h2>Paste your bit.ly below to see the destination URL.</h2>
+		<h1>De-redirector... What's behind that URL?</h1>
+		<h2>Paste your URL below to see the destination URL.</h2>
 		<form id="bitly">
 			<p><input type="text" name="url" id="url" />
 			<input type="submit" value="Submit" /></p>
 		</form>
 		<p id="result">Actual URL: <span>Enter a valid bit.ly above.</span></p>
 	</div>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-19814293-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 </body>
 </html>
