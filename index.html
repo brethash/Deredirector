@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Un-Bitly | Discover what's hiding behind your bit.ly!</title>
+	<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
+	<meta name="description" value="Ever wonder what that bit.ly link is going to take you to? Toss it in the Un-Bitly.">
+	<meta name="keywords" value="unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#bitly').submit(function(e){
+			$.post(
+				'/include/parse.php',
+				$(this).serialize(),
+				function(data){
+					$('#result span').removeClass('error');
+					alert(data);
+					if (data == 'fail'){
+						$('#result span').addClass('error');
+						$('#result span').hide().fadeIn().html('The URL you entered was not a valid bit.ly. Please try again.');
+					}
+					else if (data == 'empty'){
+						$('#result span').addClass('error');
+						$('#result span').html('Enter a valid bit.ly above.');
+					}
+					else{
+						$('#result span').hide().fadeIn().html(data);
+					}
+				}
+			);
+			e.preventDefault();
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Un-Bitly... What's inside that bit.ly?</h1>
+		<h2>Paste your bit.ly below to see the destination URL.</h2>
+		<form id="bitly">
+			<p><input type="text" name="url" id="url" />
+			<input type="submit" value="Submit" /></p>
+		</form>
+		<p id="result">Actual URL: <span>Enter a valid bit.ly above.</span></p>
+	</div>
+</body>
+</html>
