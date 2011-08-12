@@ -47,32 +47,34 @@ table {
 /* Begin page styles */
 #wrapper{
 	background: url('/images/unbitly_bg.png') no-repeat left top;
-	width: 360px;
-	height: 188px;
+	width: 375px;
+	height: 214px;
 	margin: 10% auto;
-	padding: 2%;
+	padding: 1% 1.5%;
 }
 h1{
 	font-weight: bold;
 	font-size: 20px;
+	text-align: center;
+	padding-top: 2%;
 }
 h2{
 	font-size: 16px;
-	padding-left: 4%;
+	text-align: center;
 }
 
 form{
-	width: 222px;
-	padding: 5% 0;
+	width: 156px;
+	padding: 3% 0 2%;
 	margin: 0 auto;
 }
 
-form p{
-	width: 218px;
-	margin: 0 auto;
+form p #submit{
+	margin: 2% 21.8%;
 }
 #result{
 	width: 326px;
+	padding: 0 3.2%;
 }
 a,a:visited{
 	color: #6f79a3;

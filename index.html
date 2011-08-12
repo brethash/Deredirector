@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>De-redirector | Discover what's hiding behind your short link!</title>
+	<title>De-Redirector | Discover what's hiding behind your short link!</title>
 	<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="favicon.ico"> 
 	<meta name="description" value="Ever wonder where that shortened link is going to take you to? Toss it in the De-redirector.">
@@ -9,13 +9,14 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('#bitly').submit(function(e){
+		$('form').submit(function(e){
+			$('form input:submit').attr('disabled','true').val('Processing...');
 			$.post(
 				'/include/parse.php',
 				$(this).serialize(),
 				function(data){
 					$('#result span').removeClass('error');
-
+					$('form input:submit').removeAttr('disabled').val('De-Redirect!');
 					if (data == 'fail' || data == 'empty'){
 						$('#result span').addClass('error');
 						$('#result span').html('Enter a valid URL above.');
@@ -36,11 +37,11 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>De-redirector... What's behind that URL?</h1>
+		<h1>De-Redirector... What's behind that URL?</h1>
 		<h2>Paste your URL below to see the destination URL.</h2>
 		<form id="bitly">
 			<p><input type="text" name="url" id="url" />
-			<input type="submit" value="Submit" /></p>
+			<input type="submit" value="De-Redirect!" id="submit"/></p>
 		</form>
 		<p id="result">Actual URL: <span>Enter a valid URL above.</span></p>
 	</div>
