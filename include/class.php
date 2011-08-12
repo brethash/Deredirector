@@ -1,5 +1,5 @@
 <?php
-	class Curl_example {
+	class url_request {
 	    private $response;
 	    private $response_meta_info;
 	    private $url;

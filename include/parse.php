@@ -35,7 +35,7 @@
 			// close curl
 			curl_close($ch);*/
 			
-			$c = new Curl_example($_POST['url']);
+			$c = new url_request($_POST['url']);
 
 			$data = $c->get();
 			
