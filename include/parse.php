@@ -35,11 +35,12 @@
 			// close curl
 			curl_close($ch);*/
 			
-			$c = new Curl_example(array('report'=>213,'token'=>'some string'), $_POST['url']);
+			$c = new Curl_example($_POST['url']);
 
 			$data = $c->get();
-
+			
 			$headers = $c->getHeaders();
+
 			echo '<a href="' . $headers['url'] . '">' . $headers['url'] . '</a>';
 		}
 		else{

@@ -1,15 +1,10 @@
 <?php
 	class Curl_example {
-	    private $request;
 	    private $response;
 	    private $response_meta_info;
 	    private $url;
 
-		function __construct($request, $url) { 
-			//E.g. 
-			//$request['report_num']=1432; 
-			//$request['token']='some string' 
-			$this->request = $request;
+		function __construct($url) { 
 			$this->url = $url;
 		}
 		function get() { 
@@ -34,13 +29,10 @@
 			curl_setopt($ch, CURLOPT_BUFFERSIZE, 64000);
 
 			//Tell curl to use POST 
-			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_GET, 1);
 
 			//Tell curl to write the response to a variable 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-			//Register the data to be submitted via POST 
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $this->request);
 			
 			// Follow all redirects
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

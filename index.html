@@ -13,7 +13,7 @@
 				$(this).serialize(),
 				function(data){
 					$('#result span').removeClass('error');
-					alert(data);
+
 					if (data == 'fail'){
 						$('#result span').addClass('error');
 						$('#result span').hide().fadeIn().html('The URL you entered was not a valid bit.ly. Please try again.');
