@@ -37,13 +37,18 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>De-Redirector... What's behind that URL?</h1>
-		<h2>Paste your URL below to see the destination URL.</h2>
-		<form id="bitly">
-			<p><input type="text" name="url" id="url" />
-			<input type="submit" value="De-Redirect!" id="submit"/></p>
-		</form>
-		<p id="result">Actual URL: <span>Enter a valid URL above.</span></p>
+		<div id="header">
+			<p><g:plusone size="small" count="false"></g:plusone></p>
+		</div>
+		<div id="content">
+			<h1>De-redirector... What's behind that URL?</h1>
+			<h2>Paste your URL below to see the destination URL.</h2>
+			<form id="bitly">
+				<p><input type="text" name="url" id="url" />
+				<input type="submit" value="Submit" id="submit"/></p>
+			</form>
+			<p id="result">Actual URL: <span>Enter a valid URL above.</span></p>
+		</div>
 	</div>
 	<script type="text/javascript">
 
@@ -56,7 +61,12 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-
+		
+		(function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
 	</script>
 </body>
 </html>

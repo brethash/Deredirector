@@ -46,11 +46,19 @@ table {
 
 /* Begin page styles */
 #wrapper{
-	background: url('/images/unbitly_bg.png') no-repeat left top;
-	width: 375px;
-	height: 214px;
+	width: 412px;
 	margin: 10% auto;
-	padding: 1% 1.5%;
+}
+#header{
+	height: 20px;
+}
+#header p{
+	float: right;
+}
+#content{
+	background: url('/images/unbitly_bg.png') no-repeat left top;
+	height: 224px;
+	padding: 2%;
 }
 h1{
 	font-weight: bold;
