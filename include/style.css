@@ -93,7 +93,7 @@ span.error{
 #footer{
 	height: 20px;
 	padding: 1.6% 2%;
-	font-size: 12px;
+	font-size: 14px;
 }
 #footer a{
 	float: left;
@@ -110,7 +110,6 @@ span.error{
 	color: #50665F;
 	overflow-y: auto;
 	width: 45%;
-	height: 35%;
 	margin: 10% auto;
 }
 #wrapper ~ div > div{
@@ -132,9 +131,17 @@ span.error{
 	z-index: 99;
 }
 
+/* Contact Page Styles */
+#contact .close{
+	position: absolute;
+    right: 15px;
+    top: 15px;
+	border: 1px solid;
+	padding: 3px;
+}
 #contact h3{
 	font-size: 16px;
-	text-align: center;
+	margin-top: 5px;
 }
 #contact form{
 	width: auto;
@@ -150,7 +157,7 @@ span.error{
 }
 #contact form input[type=submit]{
 	margin-left: 43%;
-	margin-top: 10%;
+	margin-top: 2%;
 }
 #contact textarea{
     background-color: #F6F6F5;

@@ -1,12 +1,41 @@
-
+<script>
+	$('#contact form').submit(function(e){
+		$('form input:submit').attr('disabled','true').val('Processing...');
+		$.post(
+			'/include/contactproc.php',
+			$(this).serialize(),
+			function(data){
+				$('#result').removeClass('error');
+				$('form input:submit').removeAttr('disabled').val('Send it!');
+				if (data == 'success'){
+					$('#result span').hide().fadeIn().html('Thank you for your submission. You should hear back from us within 48 hours.');
+				}
+				else{
+					$('#result').addClass('error');
+					$('#result').hide().fadeIn().html('Unfortunately, your submission could not be completed at this time. Please try again.');
+				}
+			}
+		);
+		e.preventDefault();
+	});
+	$('textarea').focus(function(){
+		$(this).val('');
+	});
+	$('textarea').blur(function(){
+		if ($(this).val() == ''){
+			$(this).val('Question/Comment');
+		}
+	});
+</script>
 <div>
+	<a href="" class="close">Close</a>
 	<h3>If you would like more information on the <strong>De-Redirector</strong> please use the contact form below.</h3>
+	<p id="result"></p>
 	<form>
-		<p>
-			<input type="text" name="fname" class="required" placeholder="First Name" />
-			<input type="text" name="lname" class="required" placeholder="Last Name" />
-			<input type="email" name="email" class="required" placeholder="Email Address"/>
-		</p>
+		<p><input type="text" name="fname" class="required" placeholder="First Name" />
+		<input type="text" name="lname" class="required" placeholder="Last Name" /></p>
+		<p><input type="text" name="subject" class="required" placeholder="Subject" />
+		<input type="email" name="email" class="required" placeholder="Email Address"/></p>
 		<textarea class="required" id="question" name="question" rows="10" col="80">Question/Comment</textarea>
 		<input type="submit" name="submit" value="Send it!" />
 	</form>
