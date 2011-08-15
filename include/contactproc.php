@@ -1,8 +1,5 @@
 <?php
 
-include('mysql.php');
-include('global.php');
-
 $sub = new PDO("mysql:host=host163.hostmonster.com;dbname=orchidtr_deredirector;","orchidtr_deredir","0-sSA$7_rQZ4");
 function PDOBindArray(&$poStatement, &$paArray){
  
