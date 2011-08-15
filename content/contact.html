@@ -8,11 +8,11 @@
 				$('#result').removeClass('error');
 				$('form input:submit').removeAttr('disabled').val('Send it!');
 				if (data == 'success'){
-					$('#result span').hide().fadeIn().html('Thank you for your submission. You should hear back from us within 48 hours.');
+					$('#cresult').hide().fadeIn().html('Thank you for your submission. You should hear back from us within 48 hours.');
 				}
 				else{
-					$('#result').addClass('error');
-					$('#result').hide().fadeIn().html('Unfortunately, your submission could not be completed at this time. Please try again.');
+					$('#cresult').addClass('error');
+					$('#cresult').hide().fadeIn().html('Unfortunately, your submission could not be completed at this time. Please try again.');
 				}
 			}
 		);
@@ -30,7 +30,7 @@
 <div>
 	<a href="" class="close">Close</a>
 	<h3>If you would like more information on the <strong>De-Redirector</strong> please use the contact form below.</h3>
-	<p id="result"></p>
+	<p id="cresult"></p>
 	<form>
 		<p><input type="text" name="fname" class="required" placeholder="First Name" />
 		<input type="text" name="lname" class="required" placeholder="Last Name" /></p>
