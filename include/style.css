@@ -102,3 +102,63 @@ span.error{
 	float: right;
 }
 
+/* Modal Styles */
+#wrapper ~ div > div{
+	z-index: 9999;
+}
+#wrapper ~ div > div{
+	color: #50665F;
+	overflow-y: auto;
+	width: 45%;
+	height: 35%;
+	margin: 10% auto;
+}
+#wrapper ~ div > div{
+	background-color: #FFF;
+	bottom: 50px;
+	left: 50px;
+	right: 50px;
+	top: 50px;
+	position: absolute;
+	padding: 3%;
+}
+#wrapper ~ div{
+	background: url('/images/overlay.png') repeat top left transparent;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	position: fixed;
+	z-index: 99;
+}
+
+#contact h3{
+	font-size: 16px;
+	text-align: center;
+}
+#contact form{
+	width: auto;
+}
+#contact form p{
+	padding-bottom: 1%;
+}
+#contact form input:first-child{
+	margin-right: 3.5%;
+}
+#contact form input+input{
+	margin: 0 3.25%;
+}
+#contact form input[type=submit]{
+	margin-left: 43%;
+	margin-top: 10%;
+}
+#contact textarea{
+    background-color: #F6F6F5;
+    border: 1px solid #DFDFDF;
+    color: #666666;
+    font-size: 1em;
+    height: 10em;
+    line-height: 1.2;
+	width: 93%;
+	padding: 6px;
+}

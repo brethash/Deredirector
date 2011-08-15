@@ -3,7 +3,8 @@
 <head>
 	<title>De-Redirector | Discover what's hiding behind your short link!</title>
 	<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
-	<link rel="shortcut icon" href="favicon.ico"> 
+	<link rel="shortcut icon" href="favicon.ico">
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<meta name="description" content="Ever wonder where that shortened link is going to take you to? Toss it in the De-redirector.">
 	<meta name="keywords" content="deredirector,de-redirector,tiny url,unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -32,6 +33,21 @@
 			);
 			e.preventDefault();
 		});
+		$('a').click(function(e){
+			label = $(this).attr('href');
+			$('<div id="'+ label + '"></div>').hide().appendTo("body").load("/content/" + label + ".html", function() {
+				$(this).fadeIn();
+			});
+			e.preventDefault();
+		});
+	});
+	$("#wrapper~div").live("click", function(e) {
+		if ($(e.target).parent("body").length || $(e.target).hasClass("close")) {
+			$("#wrapper~div").fadeOut(function() {
+				$(this).remove();
+			});
+			e.preventDefault();
+		}
 	});
 	</script>
 </head>
@@ -50,8 +66,8 @@
 			<p id="result">Actual URL: <span>Enter a valid URL above.</span></p>
 		</div>
 		<div id="footer">
-			<a href="#contact">Contact</a>
-			<a href="#web">Web Service</a>
+			<a href="contact">Contact</a>
+			<a href="developers">Developers</a>
 		</div>
 	</div>
 	<script type="text/javascript">
