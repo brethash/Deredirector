@@ -27,6 +27,5 @@
 		else{
 			echo 'empty';
 		}
-		
 	}
 ?>

@@ -1,4 +1,5 @@
 <?php
+	/* When CURLOPT_FOLLOWLOCATION and CURLOPT_HEADER are both true and redirect/s have happened then the header returned by curl_exec() will contain all the headers in the redirect chain in the order they were encountered. */
 	class url_request {
 	    private $response;
 	    private $response_meta_info;
@@ -25,11 +26,14 @@
 			//Apache does not need it, but it is safe to use it there as well. 
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Expect:"));
 
-			//Response will be read in chunks of 64000 bytes 
-			curl_setopt($ch, CURLOPT_BUFFERSIZE, 64000);
+			//Response will be read in chunks of 50 bytes 
+			curl_setopt($ch, CURLOPT_BUFFERSIZE, 80);
 
 			//Tell curl to write the response to a variable 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			
+			// Do not include the body from the output
+			curl_setopt($ch, CURLOPT_NOBODY, 1);
 			
 			// Follow all redirects
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -52,10 +56,9 @@
 			if (is_bool($this->response)) { 
 				if ($this->response==false){ 
 					$this->response='no';
-					//throw new Exception('No connection'); 
 				} 
 				else { 
-					//null the response, because there are actually no data 
+					//null the response, because there is actually no data 
 					$this->response=null; 
 				}
 			} 
