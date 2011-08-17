@@ -35,6 +35,7 @@
 				$query = explode('||',$_GET['q']);
 			}
 			foreach ($query as $q){
+				$q = trim($q);
 				if ($q != ''){
 					if (stripos($q,'http://') != 0){
 						$q = 'http://' . $q;

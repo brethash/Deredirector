@@ -1,18 +1,13 @@
 <?php
 	include('class.php');
-	/*
-		http://awe.sm/5Qkks
-		http://twtpoll.com/tn3p7n
-	*/
+
 	if (isset($_POST['url'])){
-		if ($_POST['url'] != ''){
-			if (stripos($_POST['url'],'http://') != 0){
-				$url = 'http://' . $_POST['url'];
+		$url = trim($_POST['url']);
+		if ($url != ''){
+			if (stripos($url,'http://') != 0){
+				$url = 'http://' . $url;
 			}
-			else{
-				$url = $_POST['url'];
-			}
-			
+
 			$c = new url_request($url);
 
 			$data = $c->get();
