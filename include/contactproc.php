@@ -1,6 +1,6 @@
 <?php
 
-$sub = new PDO("mysql:host=host163.hostmonster.com;dbname=orchidtr_deredirector;","orchidtr_deredir","0-sSA$7_rQZ4");
+$sub = new PDO("mysql:host=$host;dbname=$table;","$user","$pass");
 function PDOBindArray(&$poStatement, &$paArray){
  
 	foreach ($paArray as $k=>$v){
