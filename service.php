@@ -1,8 +1,8 @@
 <?php
 	include('include/class.php');
 	
-	mysql_connect('host163.hostmonster.com', 'orchidtr_deredir', '0-sSA$7_rQZ4') or exit(mysql_error());
-	mysql_select_db('orchidtr_deredirector') or exit(mysql_error());
+	mysql_connect($host, $user, $pass or exit(mysql_error());
+	mysql_select_db($table) or exit(mysql_error());
 	
 	function is_valid_callback($subject){
 	    $identifier_syntax
