@@ -1,6 +1,6 @@
 <?php
 	include('include/class.php');
-	
+	include('include/global.php');
 	mysql_connect($host, $user, $pass or exit(mysql_error());
 	mysql_select_db($table) or exit(mysql_error());
 	
