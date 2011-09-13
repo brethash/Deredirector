@@ -1,40 +1,26 @@
 <?php
-	/*if (isset($_POST['url'])){
-		if ($_POST['url'] != ''){
-			$ch = curl_init();
+	include('class.php');
 
-			// set url
-			curl_setopt($ch, CURLOPT_URL, $_POST['url']);
+	if (isset($_POST['url'])){
+		$url = trim($_POST['url']);
+		if ($url != ''){
+			if (stripos($url,'http://') != 0){
+				$url = 'http://' . $url;
+			}
 
-			//return the result as a string
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$output = curl_exec($ch);
+			$c = new url_request($url);
 
-			// if the string is not a valid bitly, return fail
-			if (substr($output,0,2) != "<!"){
-			    $start = strpos($output,'a href="');
-				$end = strpos($output,'">moved here<');
-				$result = substr($output,$start + 8,$end-$start - 13);
-				echo '<a href="' . $result . '">' . $result . '</a>';
+			$data = $c->get();
+			if ($data == 'no'){
+				echo 'no';
 			}
 			else{
-				echo 'fail';
-			}
-			// close curl
-			curl_close($ch);
+				$headers = $c->getHeaders();
+				echo '<a href="' . $headers['url'] . '">' . $headers['url'] . '</a>';
+			}	
 		}
 		else{
 			echo 'empty';
 		}
-	}*/
-	$ch = curl_init();
-
-	// set url
-	curl_setopt($ch, CURLOPT_URL, $_POST['url']);
-
-	//return the result as a string
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	$output = curl_exec($ch);
-	
-	echo $output;
+	}
 ?>

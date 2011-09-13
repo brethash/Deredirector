@@ -1,26 +1,30 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Un-Bitly | Discover what's hiding behind your bit.ly!</title>
+	<title>De-Redirector | Discover what's hiding behind your short link!</title>
 	<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
-	<meta name="description" value="Ever wonder what that bit.ly link is going to take you to? Toss it in the Un-Bitly.">
-	<meta name="keywords" value="unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<meta name="description" content="Ever wonder where that shortened link is going to take you to? Toss it in the De-redirector.">
+	<meta name="keywords" content="deredirector,de-redirector,tiny url,unbitly,un-bitly,bit.ly,url masking,url shortening,url,masking,shortened">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('#bitly').submit(function(e){
+		$('form').submit(function(e){
+			$('form input:submit').attr('disabled','true').val('Processing...');
 			$.post(
 				'/include/parse.php',
 				$(this).serialize(),
 				function(data){
 					$('#result span').removeClass('error');
-					alert(data);
-					if (data == 'fail'){
+					$('form input:submit').removeAttr('disabled').val('De-Redirect!');
+					if (data == 'fail' || data == 'empty'){
 						$('#result span').addClass('error');
-						$('#result span').hide().fadeIn().html('The URL you entered was not a valid bit.ly. Please try again.');
+						$('#result span').html('Enter a valid URL above.');
 					}
-					else if (data == 'empty'){
+					else if (data == 'no'){
 						$('#result span').addClass('error');
-						$('#result span').html('Enter a valid bit.ly above.');
+						$('#result span').html('You did not enter a valid URL. Please try again.');
 					}
 					else{
 						$('#result span').hide().fadeIn().html(data);
@@ -29,18 +33,60 @@
 			);
 			e.preventDefault();
 		});
+		$('a').click(function(e){
+			label = $(this).attr('href');
+			$('<div id="'+ label + '"></div>').hide().appendTo("body").load("/content/" + label + ".html", function() {
+				$(this).fadeIn();
+			});
+			e.preventDefault();
+		});
+	});
+	$("#wrapper~div").live("click", function(e) {
+		if ($(e.target).parent("body").length || $(e.target).hasClass("close")) {
+			$("#wrapper~div").fadeOut(function() {
+				$(this).remove();
+			});
+			e.preventDefault();
+		}
 	});
 	</script>
 </head>
 <body>
 	<div id="wrapper">
-		<h1>Un-Bitly... What's inside that bit.ly?</h1>
-		<h2>Paste your bit.ly below to see the destination URL.</h2>
-		<form id="bitly">
-			<p><input type="text" name="url" id="url" />
-			<input type="submit" value="Submit" /></p>
-		</form>
-		<p id="result">Actual URL: <span>Enter a valid bit.ly above.</span></p>
+		<div id="header">
+			<p><g:plusone size="small" count="false"></g:plusone></p>
+		</div>
+		<div id="content">
+			<h1>De-redirector... What's behind that URL?</h1>
+			<h2>Paste your URL below to see the destination URL.</h2>
+			<form id="bitly">
+				<p><input type="text" name="url" id="url" />
+				<input type="submit" value="De-Redirect!" id="submit"/></p>
+			</form>
+			<p id="result">Actual URL: <span>Enter a valid URL above.</span></p>
+		</div>
+		<div id="footer">
+			<a href="contact">Contact</a>
+			<!--a href="developers">Developers</a-->
+		</div>
 	</div>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-19814293-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+		
+		(function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+	</script>
 </body>
 </html>
